@@ -66,7 +66,8 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
 <h2 align="left">Block Diagram:- </h2>
 The block diagram of the proposed system:
 
-<img width="600" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution/blob/main/Image/QKD-BlockDiagrams/FlowDiagram.png">
+
+<img width="800" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution/blob/main/Image/QKD-BlockDiagrams/FlowDiagram.png">
 
 **Note: Assuming Bob (reciever) contain errors in his key.**
 
