@@ -9,8 +9,10 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 
 <h2 align="left">Quantum Key Distribution:- </h2>
 
-* Digital signatures are used to verify the authenticity and integrity of digital messages or documents.
-* The process entails the sender signing a message using their private key and sending it. Later, the receiver verifies the message using the sender's public key and determines whether to accept it or not.
+* Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key.
+* In QKD, the post-processing stage holds significant importance, as it addresses errors stemming from diverse sources like the presence of eavesdropping, device imperfection, or interference from environmental conditions.
+![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png)
+
   
 <img width="455" alt="Basic_Workflow" src="https://github.com/AmritaCSN/Rasha_Shajahan-A-Survey-on-Post-Quantum-Digital-Signature-Algorithms/assets/75829999/2531d577-4b21-434b-baf5-dd2e592e8bb3">
 
