@@ -23,7 +23,7 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
 * Sender and receiver derive a shared key from the remaining key bits.  
 
 ###
- <h2 align="left">Dependencies:- </h2>
+ <h2 align="left">Requirement:- </h2>
  
  * Darpan Application: Java 
  * MAQAN Controller: C++
