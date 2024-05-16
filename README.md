@@ -5,12 +5,11 @@ This repository has the codes used for the implementation of the project "SDN-ba
 <h2 align="left">Project Overview:- </h2>
 
 ###
-A new approach using software-defined networking (SDN) is being explored for error detection and correction in quantum key distribution. This method allows controllers to select the most suitable error correction mechanism based on the Quantum Bit Error Rate, resulting in an error-free shared key.
+Employing software-defined networking (SDN) concept to perform error detection and correction in quantum key distribution process. This approach enables controllers to choose the optimal error correction method based on the Quantum Bit Error Rate, leading to the creation of a flawless shared key.
 
 <h2 align="left">Quantum Key Distribution:- </h2>
 
-* Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key.
-* In QKD, the post-processing stage holds significant importance, as it addresses errors stemming from diverse sources like the presence of eavesdropping, device imperfection, or interference from environmental conditions.
+* Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key between the sender and receiver.
 
 **Steps:**
 
@@ -23,29 +22,14 @@ A new approach using software-defined networking (SDN) is being explored for err
 * Reveiver decode the photon states into binary bits for the matching bases. 
 * Sender and receiver derive a shared key from the remaining key bits.  
 
-<h2 align="left">Block Diagram:- </h2>
-The block diagram of the proposed system is shown in
-
-###
-
-###
- <h2 align="left">Procedure to be adhered to for execution:- </h2>
-
-* Establish the operating environment for implementing the algorithm.
-* Install necessary libraries and performance evaluation tools.
-* Choose the PQC algorithm for implementation.
-* Set up parameters, security levels, and key sizes according to the selected algorithm.
-* Generate key-pair.
-* Generate various types of signed documents and perform the verification process.
-* Assess the algorithm based on key size, time taken for signing and verification, and the protocol used for file transfer, among other factors.
-
 ###
  <h2 align="left">Dependencies:- </h2>
  
  * Darpan Application: Java 
  * MAQAN Controller: C++
  * NS3 Simulator: C++
- * OpenSSL Library
+ * Package: libssl-dev
+   To install: sudo apt-get install libssl-dev
  * A virtual machine:
       * Version: Ubuntu 64-bit
       * Processing cores: 3
@@ -64,5 +48,16 @@ The block diagram of the proposed system is shown in
 <img width="800" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png">
 
  ###
- <h2 align="left">Results:- </h2>
+ <h2 align="left">Code execution:- </h2>
+* To compile the program:
+   g++ -o MAIN MAIN.cpp -lssl -lcrypto
+* To get output
+   ./MAIN
 
+<h2 align="left">Block Diagram:- </h2>
+The block diagram of the proposed system is shown in
+<h2 align="left">Reference:- </h2>
+
+![2D Parity Check](https://www.geeksforgeeks.org/longitudinal-redundancy-check-lrc-2-d-parity-check/)
+![libssl package](https://packages.debian.org/buster/libssl-dev)
+![HMAC](https://en.wikipedia.org/wiki/HMAC)
