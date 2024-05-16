@@ -55,6 +55,7 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
       g++ -o MAIN MAIN.cpp -lssl -lcrypto
   
 * To get output:
+
   
      ./MAIN
 
