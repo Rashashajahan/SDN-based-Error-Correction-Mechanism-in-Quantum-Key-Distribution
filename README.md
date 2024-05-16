@@ -37,6 +37,7 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
       * To install:
 
               sudo apt-get install libssl-dev
+**Note: MAQAN Controller and Darpan Application provided by C-DAC organization, Thiruvananthapuram**
 ###
  <h2 align="left">Environment setup:- </h2>
  
