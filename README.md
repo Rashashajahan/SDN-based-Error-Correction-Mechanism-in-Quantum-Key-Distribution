@@ -64,7 +64,7 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
 ###
 
 <h2 align="left">Block Diagram:- </h2>
-The block diagram of the proposed system is shown in    /Image/QKD-BlockDiagrams/FlowDiagram.png
+The block diagram of the proposed system is shown in       /Image/QKD-BlockDiagrams/FlowDiagram.png
 
 **Note: Assuming Bob (reciever) contain errors in his key.**
 
