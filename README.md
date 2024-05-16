@@ -11,7 +11,20 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 
 * Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key.
 * In QKD, the post-processing stage holds significant importance, as it addresses errors stemming from diverse sources like the presence of eavesdropping, device imperfection, or interference from environmental conditions.
-![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png)
+
+**Steps:**
+
+* Sender sends a sequence of random bits by encoding them into series of polarization states using a series of random bases, through quantum channel. 
+* Reciever measures the photon polarization of the received photons using a series of random bases.
+    * Due to potential losses in the channel, some of receiver's measurements may yield to null bits.
+    * In the case the basis of receiver is different from sender, the measurement result is randomized.
+* Receiver reveals the partial information about the basis, used for the measurement. 
+* Sender will reveals information regarding the matching bases. 
+* Reveiver decode the photon states into binary bits for the matching bases  
+* Sender and receiver derive a shared key from the remaining key bits.
+![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/assets/75829999/f2b1dc82-cba8-4419-9012-8533e715ed8e)
+
+[QKD Process](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png)
 
   
 <img width="455" alt="Basic_Workflow" src="https://github.com/AmritaCSN/Rasha_Shajahan-A-Survey-on-Post-Quantum-Digital-Signature-Algorithms/assets/75829999/2531d577-4b21-434b-baf5-dd2e592e8bb3">
@@ -22,20 +35,7 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 ![DSA](https://github.com/AmritaCSN/Rasha_Shajahan-A-Survey-on-Post-Quantum-Digital-Signature-Algorithms/assets/75829999/2af0246c-08b5-459c-b7f4-4331af637405)
 
 
-**Steps:**
 
-* Key Generation phase:
-  * Private key generation.
-  * Public key will be derived from private key.
-* Identity protocol phase:
-    * To associate an identity with the public key, the entity obtains a digital certificate. This certificate contains the public key and information about the entity, such as its name, organization, and other relevant details.
-    * The certificate is signed by a trusted third party called a Certificate Authority (CA). This CA verifies the identity of the entity before issuing the certificate and it will be shared in the network.
-* Signing phase:
-    * The data intended for signing and the sender's private key are provided as inputs to the Post-Quantum Cryptography (PQC) digital signature algorithm.
-    * The signed document will be shared with the reciever through internet.
-* Verification phase:
-    * The receiver has the ability to examine the signed document using the sender's public key.
-    *If the recipient discovers that the message matches the output obtained by inputting the message and the public key into the signature algorithm, they can confirm that the message is genuinely authenticated and has not been corrupted.
 
 ###
  <h2 align="left">Tools for evaluating PQC digital signature algorithms:- </h2>
@@ -60,6 +60,17 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 
 ###
  <h2 align="left">Deployment:- </h2>
+ ![System Architecture](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png)
+ <h3 align="left">Implementation Environment setup:- </h3>
+* Apache Tomcat v10 Installation
+* Database Setup with PostgreSQL v15 
+* Java Environment Configuration
+* MAQAN Controller Configuration
+* VMware Player 17.5 Setup
+* Simulation of NS3 and NetSquid
+* Darpan Application Installation
+![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/assets/75829999/0767d478-ac96-4abb-8ad8-a9dcdd1871b8)
+
 
  ###
  <h2 align="left">Results:- </h2>
