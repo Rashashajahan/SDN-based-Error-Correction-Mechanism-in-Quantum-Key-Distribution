@@ -1,5 +1,5 @@
 # SDN based Error Correction Mechanism in Quantum Key Distribution
-This repository has the codes used for the implementation of the project "SDN-based Error Correction Mechanism in Quantum-Key-Distribution".
+This repository has the codes used for the implementation of the project "SDN-based Error Correction Mechanism in Quantum Key Distribution".
 ###
 
 <h2 align="left">Project Overview:- </h2>
@@ -50,11 +50,11 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
  ###
  <h2 align="left">Code execution:- </h2>
 * To compile the program:
-
-      g++ -o MAIN MAIN.cpp -lssl -lcrypto
+   
+   g++ -o MAIN MAIN.cpp -lssl -lcrypto
 * To get output
 
-      ./MAIN
+  ./MAIN
 
 <h2 align="left">Block Diagram:- </h2>
 The block diagram of the proposed system is shown in
