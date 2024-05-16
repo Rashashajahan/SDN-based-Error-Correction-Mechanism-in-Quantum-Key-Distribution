@@ -63,7 +63,7 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
  * QKD Simulator: Ubuntu VM
  * OpenSSL
 
- <img width="455" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png">
+ <img width="1000" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png">
     
  <h3 align="left">Implementation Environment setup:- </h3>
  
