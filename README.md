@@ -28,13 +28,13 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
  * Darpan Application: Java 
  * MAQAN Controller: C++
  * NS3 Simulator: C++
- * Package: libssl-dev
-      To install: sudo apt-get install libssl-dev
  * A virtual machine:
       * Version: Ubuntu 64-bit
       * Processing cores: 3
       * Hard Disk: 32 GB
       * Memory: 4GB
+ * Package: libssl-dev
+      * To install: sudo apt-get install libssl-dev
 
  <h2 align="left">Environment setup:- </h2>
  
@@ -61,5 +61,7 @@ The block diagram of the proposed system is shown in
 <h2 align="left">Reference:- </h2>
 
 [2D Parity Check](https://www.geeksforgeeks.org/longitudinal-redundancy-check-lrc-2-d-parity-check/)
-![libssl package](https://packages.debian.org/buster/libssl-dev)
-![HMAC](https://en.wikipedia.org/wiki/HMAC)
+
+[libssl package](https://packages.debian.org/buster/libssl-dev)
+
+[HMAC](https://en.wikipedia.org/wiki/HMAC)
