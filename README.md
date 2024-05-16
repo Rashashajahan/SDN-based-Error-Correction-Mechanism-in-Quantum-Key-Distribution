@@ -36,8 +36,8 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
  * Package: libssl-dev
       * To install:
 
-           sudo apt-get install libssl-dev
-
+              sudo apt-get install libssl-dev
+###
  <h2 align="left">Environment setup:- </h2>
  
 * Apache Tomcat v10 Installation
