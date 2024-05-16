@@ -21,13 +21,8 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 * Receiver reveals the partial information about the basis, used for the measurement. 
 * Sender will reveals information regarding the matching bases. 
 * Reveiver decode the photon states into binary bits for the matching bases  
-* Sender and receiver derive a shared key from the remaining key bits.
-![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/assets/75829999/f2b1dc82-cba8-4419-9012-8533e715ed8e)
-
-[QKD Process](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png)
-
-  
-<img width="455" alt="Basic_Workflow" src="https://github.com/AmritaCSN/Rasha_Shajahan-A-Survey-on-Post-Quantum-Digital-Signature-Algorithms/assets/75829999/2531d577-4b21-434b-baf5-dd2e592e8bb3">
+* Sender and receiver derive a shared key from the remaining key bits.  
+<img width="455" alt="QKD Process" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png">
 
 <h2 align="left">Error detection and Error Correction Mechanism:- </h2>
 
