@@ -9,7 +9,7 @@ Employing software-defined networking (SDN) concept to perform error detection a
 
 <h2 align="left">Quantum Key Distribution:- </h2>
 
-* Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key between the sender and receiver.
+Quantum Key Distribution (QKD) is a secure communication method that uses quantum mechanics principles to generate a random secret key between the sender and receiver.
 
 **Steps:**
 
@@ -29,7 +29,7 @@ Employing software-defined networking (SDN) concept to perform error detection a
  * MAQAN Controller: C++
  * NS3 Simulator: C++
  * Package: libssl-dev
-   To install: sudo apt-get install libssl-dev
+      To install: sudo apt-get install libssl-dev
  * A virtual machine:
       * Version: Ubuntu 64-bit
       * Processing cores: 3
@@ -50,14 +50,16 @@ Employing software-defined networking (SDN) concept to perform error detection a
  ###
  <h2 align="left">Code execution:- </h2>
 * To compile the program:
-   g++ -o MAIN MAIN.cpp -lssl -lcrypto
+      g++ -o MAIN MAIN.cpp -lssl -lcrypto
 * To get output
-   ./MAIN
+      ./MAIN
 
 <h2 align="left">Block Diagram:- </h2>
 The block diagram of the proposed system is shown in
+
+###
 <h2 align="left">Reference:- </h2>
 
-![2D Parity Check](https://www.geeksforgeeks.org/longitudinal-redundancy-check-lrc-2-d-parity-check/)
+[2D Parity Check](https://www.geeksforgeeks.org/longitudinal-redundancy-check-lrc-2-d-parity-check/)
 ![libssl package](https://packages.debian.org/buster/libssl-dev)
 ![HMAC](https://en.wikipedia.org/wiki/HMAC)
