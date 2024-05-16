@@ -19,8 +19,8 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
     * Due to potential losses in the channel, some of receiver's measurements may yield to null bits.
     * In the case the basis of receiver is different from sender, the measurement result is randomized.
 * Receiver reveals the partial information about the basis, used for the measurement. 
-* Sender will reveals information regarding the matching bases. 
-* Reveiver decode the photon states into binary bits for the matching bases  
+* Sender discloses the information regarding matching bases. 
+* Reveiver decode the photon states into binary bits for the matching bases. 
 * Sender and receiver derive a shared key from the remaining key bits.  
 <img width="455" alt="QKD Process" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-05-16%2017171.png">
 
@@ -55,7 +55,14 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 
 ###
  <h2 align="left">Deployment:- </h2>
- ![System Architecture](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png)
+ 
+ <h3 align="left">Dependencies:- </h3>
+ * Darpan Application: Java 
+ * MAQAN Controller: C++
+ * QKD Simulator: Ubuntu VM
+ * OpenSSL
+ <img width="455" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png>
+    
  <h3 align="left">Implementation Environment setup:- </h3>
 * Apache Tomcat v10 Installation
 * Database Setup with PostgreSQL v15 
@@ -64,8 +71,6 @@ This survey centres around the Post-Quantum Digital Signature Algorithm, a criti
 * VMware Player 17.5 Setup
 * Simulation of NS3 and NetSquid
 * Darpan Application Installation
-![image](https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/assets/75829999/0767d478-ac96-4abb-8ad8-a9dcdd1871b8)
-
 
  ###
  <h2 align="left">Results:- </h2>
