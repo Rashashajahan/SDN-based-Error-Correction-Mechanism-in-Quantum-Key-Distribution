@@ -1,4 +1,4 @@
-# Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution
+# SDN based Error Correction Mechanism in Quantum Key Distribution
 This repository has the codes used for the implementation of the project "SDN-based Error Correction Mechanism in Quantum-Key-Distribution".
 ###
 
