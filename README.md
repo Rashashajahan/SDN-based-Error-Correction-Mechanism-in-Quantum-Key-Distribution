@@ -34,7 +34,9 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
       * Hard Disk: 32 GB
       * Memory: 4GB
  * Package: libssl-dev
-      * To install: sudo apt-get install libssl-dev
+      * To install:
+
+           sudo apt-get install libssl-dev
 
  <h2 align="left">Environment setup:- </h2>
  
