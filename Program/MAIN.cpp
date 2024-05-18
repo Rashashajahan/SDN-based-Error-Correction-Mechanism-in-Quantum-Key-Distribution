@@ -7,17 +7,18 @@
 #include <openssl/hmac.h>
 #include <openssl/rand.h>
 #include <cstring>
+#include <numeric>
+#include <iomanip>
+#include <sstream>
 
 using namespace std;
 
 // Global keys for Alice and Bob
 const string aliceKey = "0000010010111100011101000110111111110011010100100010110011000110111111110100011010010011111100111110";
-const string bobKey = "1000110010111100011111000110111111110011010100100010110011000110111111110100011010010011111100111101";
-int passes = 5; // Number of passes in the Cascade protocol
+const string bobKey = "0000110010111100011111000110111111110011010100100010110011000110111111110100011010010011111100111101";
 
 // Function prototypes
 void cascadeErrorCorrection(double qberValue, string bobKey);
-void runLDPCErrorCorrection(double qberValue);
 void run2DParityErrorCorrection(double qberValue, string bobKey);
 vector<int> correctErrorsCascade(vector<int>& qubits, double qberValue);
 vector<int> decodeLDPC(vector<int>& receivedCodeword, const vector<vector<int>>& parityCheckMatrix, double qberValue);
@@ -52,20 +53,13 @@ int main() {
     } else if (qberValue >= 5 && qberValue <= 15) {
         cout << "Selected Error Correction Mechanism: Cascade" << endl;
         cascadeErrorCorrection(qberValue, bobKey);
-    } else if (qberValue > 15 && qberValue <= 32) {
-        cout << "Selected Error Correction Mechanism: LDPC" << endl;
-        runLDPCErrorCorrection(qberValue);
-    } else if (qberValue > 32) {
-        cout << "QBER exceeds 32%. Cannot correct errors." << endl;
     } else {
         cout << "Invalid QBER value. Please check the measurement." << endl;
     }
 
-    cout << "Final Alice's Key: " << aliceKey << endl;
+    cout << "Alice's Key: " << aliceKey << endl;
     return 0;
 }
-
-// Function implementations remain unchanged (implementations of cascadeErrorCorrection, runLDPCErrorCorrection, etc.)
 
 string generateRandomKey(size_t length) {
     string key;
@@ -95,53 +89,170 @@ string calculateHMAC(const string& key, const string& data) {
     return hmacStr;
 }
 
-// Function to perform error correction using Cascade protocol
-void cascadeErrorCorrection(double qberValue, string bobKey) {
-    string correctedKey = bobKey;
-    string codeword = generateCodeword(aliceKey);
-    vector<int> errorFlag(passes, 0); // Initialize error flag for each pass
-
-    for (int pass = 0; pass < passes; ++pass) {
-        // Error detection and correction logic for each pass
-        bool errorDetected = false;
-        for (size_t i = 0; i < bobKey.size(); ++i) {
-            if (bobKey[i] != codeword[i]) {
-                errorFlag[pass] = 1; // Set flag for error detection in this pass
-                correctedKey[i] = codeword[i]; // Correct the error
-                errorDetected = true;
-            }
-        }
-        // Print the corrected key for this pass
-        std::cout << "Pass " << pass + 1 << " Corrected Key: " << correctedKey << std::endl;
-
-        // If no error detected in this pass, break the loop
-        if (!errorDetected) {
-            std::cout << "No errors detected in Pass " << pass + 1 << std::endl;
-            break;
-        }
-        bobKey = correctedKey; // Update the key for the next pass
+std::string arrayToString(const std::vector<int>& array) {
+    std::string str;
+    for (int bit : array) {
+        str += std::to_string(bit);
     }
+    return str;
+} 
 
-    // Print the final corrected key and error flags
-    std::cout << "Final Corrected Key: " << correctedKey << std::endl;
-    std::cout << "Error Flags: ";
-    for (int flag : errorFlag) {
-        std::cout << flag << " ";
-    }
-    std::cout << std::endl;
+// Function to calculate the parity bit
+int calculate_parity(const std::vector<int>& bits) {
+    return std::accumulate(bits.begin(), bits.end(), 0) % 2;
 }
 
-void runLDPCErrorCorrection(double qberValue) {
-    cout << "Running LDPC Error Correction Mechanism..." << endl;
-    vector<vector<int>> parityCheckMatrix = {
-        {1, 1, 1, 0, 0, 0},
-        {0, 0, 1, 1, 1, 0},
-        {1, 0, 0, 1, 0, 1}
-    };
-    vector<int> receivedCodeword = {0, 1, 1, 0, 1, 0};
-    vector<int> decodedCodeword = decodeLDPC(receivedCodeword, parityCheckMatrix, qberValue);
+// Function to calculate the SHA-256 hash
+std::string hash_value(const std::vector<int>& bits) {
+    std::string bit_string;
+    for (int bit : bits) {
+        bit_string += std::to_string(bit);
+    }
+    
+    unsigned char hash[SHA256_DIGEST_LENGTH];
+    SHA256(reinterpret_cast<const unsigned char*>(bit_string.c_str()), bit_string.size(), hash);
+    
+    std::stringstream ss;
+    for (int i = 0; i < SHA256_DIGEST_LENGTH; i++) {
+        ss << std::hex << std::setw(2) << std::setfill('0') << (int)hash[i];
+    }
+    
+    return ss.str();
+}
 
-    cout << "Decoded Codeword: " << arrayToString(decodedCodeword) << endl;
+// Function to divide the key and append the parity bit
+std::pair<std::vector<int>, std::vector<int>> divide_and_append_parity(std::vector<int>& key) {
+    int mid = key.size() / 2;
+    std::vector<int> left(key.begin(), key.begin() + mid);
+    std::vector<int> right(key.begin() + mid, key.end());
+    
+    left.push_back(calculate_parity(left));
+    right.push_back(calculate_parity(right));
+    
+    return {left, right};
+}
+
+// Function to remove the parity bit
+std::vector<int> remove_parity(const std::vector<int>& bits) {
+    return std::vector<int>(bits.begin(), bits.end() - 1);
+}
+
+// Function to compare and correct the key
+std::vector<int> compare_and_correct(const std::vector<int>& bob_part, const std::vector<int>& alice_part) {
+    std::vector<int> corrected = bob_part;
+    for (size_t i = 0; i < bob_part.size() - 1; ++i) {
+        if (bob_part[i] != alice_part[i]) {
+            corrected[i] ^= 1;
+            break;
+        }
+    }
+    return corrected;
+}
+
+// Function to process the key and correct errors
+std::vector<int> process_key(const std::vector<int>& key, const std::vector<int>& aliceparities) {
+std::vector<int> n;
+    std::vector<int> remaining_key = key;
+    std::vector<int> alice_parities =aliceparities;
+    
+    while (n.size() < key.size()) {
+        auto [left_bob, right_bob] = divide_and_append_parity(remaining_key);
+        std::string left_bob_hash = hash_value(left_bob);
+        std::string right_bob_hash = hash_value(right_bob);
+        
+        auto [left_alice, right_alice] = divide_and_append_parity(alice_parities);
+        std::string left_alice_hash = hash_value(left_alice);
+        std::string right_alice_hash = hash_value(right_alice);
+        
+        std::vector<int> left_corrected;
+        if (left_bob_hash != left_alice_hash) {
+            left_corrected = compare_and_correct(left_bob, left_alice);
+            left_corrected = remove_parity(left_corrected);
+        } else {
+            left_corrected = remove_parity(left_bob);
+        }
+        
+        std::vector<int> right_corrected;
+        if (right_bob_hash != right_alice_hash) {
+            right_corrected = compare_and_correct(right_bob, right_alice);
+            right_corrected = remove_parity(right_corrected);
+        } else {
+            right_corrected = remove_parity(right_bob);
+        }
+        
+        n.insert(n.end(), left_corrected.begin(), left_corrected.end());
+        n.insert(n.end(), right_corrected.begin(), right_corrected.end());
+        remaining_key = n;
+    }
+    
+    return n;
+}
+
+
+
+// Function to perform error correction using Cascade protocol
+void cascadeErrorCorrection(double qberValue, const std::string bobKey) {
+    std::vector<int> alice_Key(aliceKey.begin(), aliceKey.end());
+    std::vector<int> bob_Key(bobKey.begin(), bobKey.end());
+    string correctedKey = bobKey;
+    string codeword = generateCodeword(aliceKey);
+    
+    // Convert the vector of ASCII values to a vector of integers (0 and 1)
+    auto convertAsciiToBinary = [](const std::vector<int>& asciiVec) {
+        std::vector<int> binaryVec;
+        for (int ascii : asciiVec) {
+            if (ascii == 48) {
+                binaryVec.push_back(0);
+            } else if (ascii == 49) {
+                binaryVec.push_back(1);
+            }
+        }
+        return binaryVec;
+    };
+
+    // Convert the keys
+    alice_Key = convertAsciiToBinary(alice_Key);
+    bob_Key = convertAsciiToBinary(bob_Key);
+
+    // Alice's side: prepare key with parity bits
+    auto [left_alice, right_alice] = divide_and_append_parity(alice_Key);
+    std::vector<int> alice_parities = left_alice;
+    alice_parities.insert(alice_parities.end(), right_alice.begin(), right_alice.end());
+    
+    // Bob's side: correct errors using received parities from Alice
+    std::vector<int> corrected_bob_key = process_key(bob_Key, alice_parities);
+
+    // Final check and correction
+    std::vector<int> alice_final = alice_Key;
+    alice_final.push_back(calculate_parity(alice_Key));
+    std::vector<int> bob_final = corrected_bob_key;
+    bob_final.push_back(calculate_parity(corrected_bob_key));
+    
+    for (size_t i = 0; i < bobKey.size(); ++i) {
+            if (bobKey[i] != codeword[i]) {
+                correctedKey[i] = codeword[i]; // Correct the error
+            }
+        }
+    
+    if (hash_value(alice_final) != hash_value(bob_final)) {
+        for (size_t i = 0; i < corrected_bob_key.size(); ++i) {
+            if (corrected_bob_key[i] != alice_Key[i]) {
+                corrected_bob_key[i] ^= 1;
+                break;
+            }
+        }
+    }
+    std::cout << "Alice's key: ";
+    for (int bit : alice_Key) {
+        std::cout << bit;
+    }
+    std::cout << std::endl;
+
+    std::cout << "Corrected Bob's key: ";
+    for (int bit : correctedKey) {
+        std::cout << bit;
+    }
+    std::cout << std::endl;
 }
 
 void run2DParityErrorCorrection(double qberValue, string bobKey) { // Remove const from bobKey
@@ -168,17 +279,8 @@ void run2DParityErrorCorrection(double qberValue, string bobKey) { // Remove con
                 match = false;
             }
         }
-
-        if (match) {
-            cout << "Match found after correction!" << endl;
-        } else {
-            cout << "Mismatch found. Bob's corrected key:" << endl;
-            cout << bobKey << endl;
-        }
-        cout << "----------------------" << endl;
     }
     cout << "Bob's Key: " << bobKey << endl;
-    cout << "Alice's Key: " << aliceKey << endl;
 }
 
 
@@ -201,13 +303,6 @@ vector<int> decodeLDPC(vector<int>& receivedCodeword, const vector<vector<int>>&
     return decodedCodeword;
 }
 
-string arrayToString(const vector<int>& array) {
-    string result;
-    for (int val : array) {
-        result += to_string(val);
-    }
-    return result;
-}
 
 // Function to divide the key into equal parts
 vector<string> divideKey(const string& key, int numParts) {
