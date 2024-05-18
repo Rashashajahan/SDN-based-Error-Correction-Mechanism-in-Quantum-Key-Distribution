@@ -16,7 +16,7 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
 * Sender sends a sequence of random bits by encoding them into series of polarization states using a series of random bases, through quantum channel. 
 * Reciever measures the photon polarization of the received photons using a series of random bases.
     * Due to potential losses in the channel, some of receiver's measurements may yield to null bits.
-    * In the case the basis of receiver is different from sender, the measurement result is randomized.
+    * In case the basis of receiver is different from sender, the measurement result will be randomized.
 * Receiver reveals the partial information about the basis, used for the measurement. 
 * Sender discloses the information regarding matching bases. 
 * Reveiver decode the photon states into binary bits for the matching bases. 
@@ -55,11 +55,11 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
  
 * To compile the program:
   
-      g++ -o MAIN MAIN.cpp -lssl -lcrypto
+      g++ -o MainProg MainProg.cpp -lssl -lcrypto
   
 * To get output:
 
-        ./MAIN
+        ./MainProg
 
 ###
 
