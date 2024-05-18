@@ -51,6 +51,11 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
 <img width="800" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution-Protocol/blob/main/Image/QKD-BlockDiagrams/Screenshot%202024-03-29%20132434.png">
 
  ###
+<h2 align="left">Sequence Diagram:- </h2>
+
+   <img width="700" alt="Sequence Diagram" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution/blob/main/Image/QKD-BlockDiagrams/sequencediagram.png">
+###
+
  <h2 align="left">Code execution:- </h2>
  
 * To compile the program:
@@ -62,11 +67,6 @@ Quantum Key Distribution (QKD) is a secure communication method that uses quantu
         ./MainProg
 
 ###
-<h2 align="left">Sequence Diagram:- </h2>
-
-   <img width="700" alt="Sequence Diagram" src=https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution/blob/main/Image/QKD-BlockDiagrams/sequencediagram.png">
-###
-
 <h2 align="left">Program Execution Flow:- </h2>
 
    <img width="700" alt="System Architecture" src="https://github.com/AmritaCSN/Rasha_Shajahan-SDN-based-Error-Correction-Mechanism-in-Quantum-Key-Distribution/blob/main/Image/QKD-BlockDiagrams/FlowDiagram.png">
